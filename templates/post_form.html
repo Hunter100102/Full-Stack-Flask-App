@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2 class="mb-4">{{ post.title if post else 'New Post' }}</h2>
+<form method="POST">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" name="title" class="form-control" required value="{{ post.title if post else '' }}">
+  </div>
+  <div class="mb-3">
+    <label for="content" class="form-label">Content</label>
+    <textarea name="content" class="form-control" rows="5" required>{{ post.content if post else '' }}</textarea>
+  </div>
+  <button type="submit" class="btn btn-success">{{ 'Update' if post else 'Create' }}</button>
+  <a href="{{ url_for('dashboard') }}" class="btn btn-secondary ms-2">Cancel</a>
+</form>
+{% endblock %}
